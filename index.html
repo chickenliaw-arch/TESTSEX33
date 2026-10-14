@@ -1,0 +1,2863 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="theme-color" content="#2563EB">
+  <meta name="description" content="桃園市立楊梅高中分機一覽表及教育部最新校園性別事件通報與調查處理程序互動式資訊網">
+  <title>楊梅高中分機一覽表 - 校園性別事件通報與處理程序互動網</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    /* =========================================
+       1. 基礎變數與色彩系統 (明亮、色彩豐富、活力校園)
+       ========================================= */
+    :root {
+      --primary: #2563EB;
+      --primary-dark: #1D4ED8;
+      --primary-light: #EFF6FF;
+      --accent-coral: #F97316;
+      --accent-emerald: #10B981;
+      --accent-rose: #EC4899;
+      --accent-amber: #F59E0B;
+      --accent-purple: #8B5CF6;
+      --accent-cyan: #06B6D4;
+      --bg-main: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(37,99,235,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 25px -5px rgba(37,99,235,0.15), 0 8px 10px -6px rgba(0,0,0,0.05);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --base-font-size: 16px;
+      --h1-size: 1.45rem;
+      --h2-size: 1.25rem;
+      --h3-size: 1.1rem;
+      --body-size: 1rem;
+      --small-size: 0.9rem;
+    }
+
+    /* 字體大小切換 (保證清晰易讀，限制：不要太小) */
+    html[data-font="medium"] {
+      --base-font-size: 18px;
+      --h1-size: 1.6rem;
+      --h2-size: 1.35rem;
+      --h3-size: 1.2rem;
+      --body-size: 1.05rem;
+      --small-size: 0.95rem;
+    }
+    html[data-font="large"] {
+      --base-font-size: 20px;
+      --h1-size: 1.75rem;
+      --h2-size: 1.45rem;
+      --h3-size: 1.3rem;
+      --body-size: 1.15rem;
+      --small-size: 1.02rem;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: var(--base-font-size);
+      background-color: #E2E8F0;
+      color: var(--text-main);
+      line-height: 1.55;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* 手機直式外框限制 (專為手機直式設計，桌面視窗則置中呈現手機模擬器外框) */
+    .mobile-wrapper {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background-color: var(--bg-main);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      padding-bottom: 78px; /* 留出底部導航欄空間 */
+      overflow-x: hidden;
+    }
+
+    /* =========================================
+       2. 頂部標題列與功能列
+       ========================================= */
+    .top-header {
+      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #3B82F6 100%);
+      color: #FFFFFF;
+      padding: 16px 18px 14px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: var(--shadow-md);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .school-badge {
+      width: 42px;
+      height: 42px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
+    }
+
+    .brand-text h1 {
+      font-size: var(--h1-size);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .brand-subtitle {
+      font-size: var(--small-size);
+      opacity: 0.9;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .badge-pill {
+      background: #F59E0B;
+      color: #78350F;
+      font-weight: 700;
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header-btn:active {
+      transform: scale(0.92);
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* 頂部跑馬燈 / 重要通報時限提醒 */
+    .urgent-banner {
+      background: linear-gradient(90deg, #EF4444 0%, #F97316 100%);
+      color: white;
+      padding: 7px 14px;
+      font-size: var(--small-size);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      box-shadow: inset 0 -1px 3px rgba(0,0,0,0.15);
+      animation: gentlePulse 2.5s infinite;
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.92; }
+    }
+
+    .urgent-banner-text {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #FEF08A;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #FEF08A;
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* =========================================
+       3. 檢索與快速篩選區
+       ========================================= */
+    .search-filter-section {
+      padding: 14px 16px 10px;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 72px;
+      z-index: 35;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      color: var(--primary);
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 46px;
+      padding: 8px 42px 8px 42px;
+      font-size: var(--body-size);
+      border: 2px solid #CBD5E1;
+      border-radius: var(--radius-full);
+      background-color: #F8FAFC;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      background-color: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 12px;
+      background: #E2E8F0;
+      color: #64748B;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    /* 分類標籤滑動列 */
+    .filter-chips {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0 2px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .filter-chips::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chip-btn {
+      flex-shrink: 0;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: var(--small-size);
+      font-weight: 600;
+      border: 1px solid #CBD5E1;
+      background: #F1F5F9;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .chip-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: 0 3px 8px rgba(37,99,235,0.25);
+    }
+
+    /* =========================================
+       4. 快速緊急通報資訊卡片 (高亮專區)
+       ========================================= */
+    .emergency-dial-card {
+      margin: 12px 16px 8px;
+      background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
+      border: 2px solid #FDA4AF;
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .emergency-dial-card::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      background: rgba(244,63,94,0.1);
+      border-radius: 50%;
+    }
+
+    .emergency-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .emergency-title {
+      font-size: var(--h3-size);
+      font-weight: 800;
+      color: #BE123C;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .emergency-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .quick-call-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      border: 1.5px solid #F43F5E;
+      border-radius: var(--radius-md);
+      padding: 8px 6px;
+      text-decoration: none;
+      color: #9F1239;
+      transition: all 0.2s;
+      box-shadow: 0 2px 4px rgba(225,29,72,0.06);
+    }
+
+    .quick-call-btn:active {
+      transform: scale(0.96);
+      background: #FFF1F2;
+    }
+
+    .quick-call-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #64748B;
+    }
+
+    .quick-call-number {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #E11D48;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* =========================================
+       5. 主要標籤頁切換視圖
+       ========================================= */
+    .main-container {
+      padding: 8px 16px 20px;
+      flex: 1;
+    }
+
+    .view-panel {
+      display: none;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    .view-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================================
+       6. 頁籤 1: 分機一覽表卡片設計
+       ========================================= */
+    .dept-group {
+      margin-bottom: 18px;
+    }
+
+    .dept-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: linear-gradient(90deg, #F1F5F9 0%, #E2E8F0 100%);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .dept-header-title {
+      font-size: var(--h3-size);
+      font-weight: 700;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dept-badge {
+      font-size: 0.8rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: #DBEAFE;
+      color: #1E40AF;
+      font-weight: 600;
+    }
+
+    .ext-cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ext-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .ext-card.highlight-gender {
+      border: 2px solid #F43F5E;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFF5F7 100%);
+      box-shadow: 0 4px 14px rgba(244,63,94,0.12);
+    }
+
+    .ext-card.highlight-security {
+      border: 2px solid #F59E0B;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFFBEB 100%);
+      box-shadow: 0 4px 14px rgba(245,158,11,0.12);
+    }
+
+    .ext-card-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .ext-info-col {
+      flex: 1;
+    }
+
+    .ext-role-title {
+      font-size: var(--h3-size);
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .ext-name {
+      font-size: var(--body-size);
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-left: 2px;
+    }
+
+    .ext-duty {
+      font-size: var(--small-size);
+      color: #475569;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .duty-tag {
+      display: inline-block;
+      font-size: 0.76rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: #E0E7FF;
+      color: #3730A3;
+      margin-right: 4px;
+      font-weight: 600;
+    }
+
+    .duty-tag.gender-tag {
+      background: #FFE4E6;
+      color: #9F1239;
+      border: 1px solid #FECDD3;
+    }
+
+    .ext-actions-col {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ext-number-badge {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      padding: 6px 12px;
+      border-radius: var(--radius-md);
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s;
+    }
+
+    .ext-number-badge:active {
+      transform: scale(0.94);
+      background: #DBEAFE;
+    }
+
+    .call-btn-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 3px 8px rgba(16,185,129,0.35);
+      transition: all 0.2s;
+    }
+
+    .call-btn-circle:active {
+      transform: scale(0.92);
+      box-shadow: 0 1px 3px rgba(16,185,129,0.4);
+    }
+
+    /* =========================================
+       7. 頁籤 2: 性別事件處理流程 (依 PDF 完整設計)
+       ========================================= */
+    .flow-intro-card {
+      background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .flow-intro-card h2 {
+      font-size: var(--h2-size);
+      font-weight: 800;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flow-version-tag {
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.22);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      margin-top: 4px;
+      display: inline-block;
+    }
+
+    .flow-timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .flow-timeline::before {
+      content: "";
+      position: absolute;
+      left: 11px;
+      top: 14px;
+      bottom: 24px;
+      width: 4px;
+      background: linear-gradient(180deg, #EF4444 0%, #F59E0B 25%, #10B981 50%, #8B5CF6 75%, #3B82F6 100%);
+      border-radius: 4px;
+    }
+
+    .flow-step-node {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .node-pin {
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 4px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      z-index: 2;
+    }
+
+    .flow-step-node.step-urgent .node-pin {
+      border-color: #EF4444;
+      color: #EF4444;
+    }
+    .flow-step-node.step-accept .node-pin {
+      border-color: #F59E0B;
+      color: #D97706;
+    }
+    .flow-step-node.step-investigate .node-pin {
+      border-color: #10B981;
+      color: #059669;
+    }
+    .flow-step-node.step-remedy .node-pin {
+      border-color: #8B5CF6;
+      color: #7C3AED;
+    }
+
+    .node-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .node-card:active {
+      box-shadow: var(--shadow-md);
+    }
+
+    .node-header {
+      padding: 12px 14px;
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .node-header-title {
+      font-size: var(--h3-size);
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .deadline-badge {
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .deadline-urgent {
+      background: #FEE2E2;
+      color: #B91C1C;
+      border: 1px solid #FCA5A5;
+      animation: alertPulse 1.8s infinite;
+    }
+
+    @keyframes alertPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    .deadline-warning {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+    }
+
+    .deadline-info {
+      background: #E0E7FF;
+      color: #3730A3;
+      border: 1px solid #C7D2FE;
+    }
+
+    .node-body {
+      padding: 14px;
+      font-size: var(--body-size);
+    }
+
+    .node-body-content {
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .bullet-list {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 7px;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 6px;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .note-box {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: var(--small-size);
+      line-height: 1.5;
+    }
+
+    .note-warning {
+      background: #FFFBEB;
+      border-left: 4px solid #F59E0B;
+      color: #92400E;
+    }
+
+    .note-critical {
+      background: #FEF2F2;
+      border-left: 4px solid #EF4444;
+      color: #991B1B;
+    }
+
+    .note-info {
+      background: #EFF6FF;
+      border-left: 4px solid #3B82F6;
+      color: #1E40AF;
+    }
+
+    .branch-box {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .branch-card {
+      border: 1px solid #CBD5E1;
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      background: #F8FAFC;
+    }
+
+    .branch-card.accepted {
+      border-color: #86EFAC;
+      background: #F0FDF4;
+    }
+
+    .branch-card.rejected {
+      border-color: #FECDD3;
+      background: #FFF1F2;
+    }
+
+    .branch-card-title {
+      font-size: var(--small-size);
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* 四軌並行區塊 */
+    .parallel-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .parallel-card {
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      border: 1.5px solid;
+    }
+
+    .track-a {
+      border-color: #93C5FD;
+      background: #EFF6FF;
+    }
+    .track-b {
+      border-color: #A7F3D0;
+      background: #ECFDF5;
+    }
+    .track-c {
+      border-color: #FBCFE8;
+      background: #FDF2F8;
+    }
+    .track-d {
+      border-color: #FDE68A;
+      background: #FFFBEB;
+    }
+
+    .track-title {
+      font-size: var(--small-size);
+      font-weight: 800;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* =========================================
+       8. 頁籤 3: 流程速查與實用模擬器
+       ========================================= */
+    .tool-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tool-card-title {
+      font-size: var(--h2-size);
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .tool-desc {
+      font-size: var(--small-size);
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    /* 24小時倒數模擬器 */
+    .countdown-widget {
+      background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .countdown-label {
+      font-size: var(--small-size);
+      color: #94A3B8;
+      margin-bottom: 4px;
+    }
+
+    .countdown-digits {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #38BDF8;
+      letter-spacing: 2px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .countdown-status {
+      font-size: 0.85rem;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    .datetime-input-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .datetime-input {
+      flex: 1;
+      height: 42px;
+      padding: 6px 12px;
+      border: 2px solid #CBD5E1;
+      border-radius: var(--radius-md);
+      font-size: var(--body-size);
+      outline: none;
+    }
+
+    .calc-btn {
+      padding: 0 16px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: var(--body-size);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .checklist-container {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .check-item.done {
+      background: #ECFDF5;
+      border-color: #A7F3D0;
+    }
+
+    .check-checkbox {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--accent-emerald);
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .check-text {
+      font-size: var(--body-size);
+      color: #334155;
+      flex: 1;
+    }
+
+    .check-item.done .check-text {
+      text-decoration: line-through;
+      color: #059669;
+    }
+
+    /* 身分救濟速查精靈 */
+    .role-selector {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .role-btn {
+      padding: 12px 10px;
+      border: 2px solid #CBD5E1;
+      border-radius: var(--radius-md);
+      background: #F8FAFC;
+      font-size: var(--body-size);
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+
+    .role-btn.active {
+      border-color: var(--primary);
+      background: #EFF6FF;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(37,99,235,0.2);
+    }
+
+    .role-icon {
+      font-size: 1.5rem;
+    }
+
+    .remedy-result-card {
+      background: #F0FDF4;
+      border: 2px solid #86EFAC;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .remedy-target-title {
+      font-size: var(--h3-size);
+      font-weight: 800;
+      color: #166534;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* =========================================
+       9. 頁籤 4: 官方流程圖與校園安全地圖
+       ========================================= */
+    .map-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .map-card h3 {
+      font-size: var(--h2-size);
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .img-preview-box {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1.5px solid #CBD5E1;
+      position: relative;
+      cursor: pointer;
+      margin-top: 10px;
+      background: #F1F5F9;
+    }
+
+    .img-preview-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .img-preview-box:hover img {
+      transform: scale(1.02);
+    }
+
+    .zoom-hint-pill {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(15,23,42,0.85);
+      color: #FFFFFF;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* =========================================
+       10. 頁籤 5: 關於與外部求助資源
+       ========================================= */
+    .about-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 14px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-card h3 {
+      font-size: var(--h3-size);
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .law-item {
+      padding: 8px 0;
+      border-bottom: 1px dashed #E2E8F0;
+      font-size: var(--body-size);
+    }
+
+    .law-item:last-child {
+      border-bottom: none;
+    }
+
+    .external-hotline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .hotline-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-main);
+      transition: all 0.2s;
+    }
+
+    .hotline-item:active {
+      background: #EFF6FF;
+      border-color: var(--primary);
+    }
+
+    .hotline-title {
+      font-weight: 700;
+      font-size: var(--body-size);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hotline-num {
+      font-weight: 800;
+      color: #E11D48;
+      font-size: 1.1rem;
+    }
+
+    /* =========================================
+       11. 底部導航欄 (手機專用 Dock Bar)
+       ========================================= */
+    .bottom-dock {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      height: 68px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 4px;
+      z-index: 50;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+    }
+
+    .dock-btn {
+      flex: 1;
+      height: 100%;
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: #64748B;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      padding: 4px 2px;
+    }
+
+    .dock-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2.2;
+      transition: transform 0.2s;
+    }
+
+    .dock-btn.active {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .dock-btn.active svg {
+      transform: translateY(-2px) scale(1.1);
+      stroke: var(--primary);
+    }
+
+    .dock-btn:active {
+      transform: scale(0.92);
+    }
+
+    /* =========================================
+       12. 全螢幕大圖放大檢視 Modal
+       ========================================= */
+    .image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15,23,42,0.92);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .image-modal.active {
+      display: flex;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 110;
+    }
+
+    .modal-img-container {
+      max-width: 100%;
+      max-height: 85vh;
+      overflow: auto;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .modal-img-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .modal-caption {
+      color: white;
+      margin-top: 12px;
+      font-size: var(--body-size);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* 浮動提示 Toast */
+    .toast-msg {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: rgba(15,23,42,0.92);
+      color: white;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      font-size: var(--body-size);
+      font-weight: 700;
+      z-index: 120;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .toast-msg.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* 檢索空結果提示 */
+    .empty-search-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+    }
+    .empty-search-state svg {
+      width: 60px;
+      height: 60px;
+      stroke: #94A3B8;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 手機專用直式排版容器 -->
+  <div class="mobile-wrapper" id="app">
+
+    <!-- 頂部標題列 -->
+    <header class="top-header">
+      <div class="header-content">
+        <div class="brand-group">
+          <div class="school-badge">🏫</div>
+          <div class="brand-text">
+            <!-- 嚴格依需求第2點：標題：楊梅高中分機一覽表 -->
+            <h1>楊梅高中分機一覽表</h1>
+            <div class="brand-subtitle">
+              <span>性平處理程序互動網</span>
+              <span class="badge-pill">114年教育部版</span>
+            </div>
+          </div>
+        </div>
+        <div class="header-actions">
+          <!-- 字體縮放按鈕 (滿足限制：字體不要太小) -->
+          <button class="header-btn" id="fontScaleBtn" title="切換字體大小 (正常/放大/特大)" aria-label="切換字體大小">
+            <span style="font-weight: 800; font-size: 0.85rem;">字A</span>
+          </button>
+          <!-- 音效切換開關 -->
+          <button class="header-btn" id="soundToggleBtn" title="音效開關" aria-label="音效開關">
+            <span id="soundIcon">🔊</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 重要黃金時限緊急提醒 Bar -->
+    <div class="urgent-banner">
+      <div class="urgent-banner-text">
+        <span class="pulse-dot"></span>
+        <span>校園性平事件通報時限：<strong>知悉後 24 小時內</strong> 依法通報！</span>
+      </div>
+      <button class="chip-btn" id="quickReportBtn" style="padding: 2px 8px; background: white; color: #DC2626; border: none; font-size: 0.75rem;">
+        通報指引
+      </button>
+    </div>
+
+    <!-- 檢索與快速分類篩選欄 (支援分機、處室、姓名、性平流程關鍵字即時搜尋) -->
+    <section class="search-filter-section">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="search" 
+          id="globalSearchInput" 
+          class="search-input" 
+          placeholder="🔍 搜尋分機、處室、性平階段、關鍵字..." 
+          autocomplete="off"
+        >
+        <button id="clearSearchBtn" class="clear-search-btn" title="清除搜尋">✕</button>
+      </div>
+
+      <!-- 分類標籤 (即時篩選) -->
+      <div class="filter-chips" id="filterChips">
+        <button class="chip-btn active" data-filter="all">🌟 全部瀏覽</button>
+        <button class="chip-btn" data-filter="emergency">🚨 性平/校安專責</button>
+        <button class="chip-btn" data-filter="student">🎒 學務處</button>
+        <button class="chip-btn" data-filter="counsel">💚 輔導室</button>
+        <button class="chip-btn" data-filter="academic">📚 教務處</button>
+        <button class="chip-btn" data-filter="general">🏢 總務處</button>
+        <button class="chip-btn" data-filter="other">🏛️ 其他處室</button>
+      </div>
+    </section>
+
+    <!-- 緊急聯絡快捷卡片 (高亮展示，一鍵直撥) -->
+    <div class="emergency-dial-card">
+      <div class="emergency-header">
+        <div class="emergency-title">
+          <span>⚡ 性平與校安通報窗口</span>
+        </div>
+        <span style="font-size: 0.75rem; color: #BE123C; font-weight: 700;">總機 (03) 478-9618</span>
+      </div>
+      <div class="emergency-grid">
+        <a href="tel:034789618,1352" class="quick-call-btn" onclick="playPhoneDialSound()">
+          <span class="quick-call-label">生輔組 (校安通報)</span>
+          <span class="quick-call-number">📞 #1352</span>
+        </a>
+        <a href="tel:034789618,1301" class="quick-call-btn" onclick="playPhoneDialSound()">
+          <span class="quick-call-label">學務主任 (秘書單位)</span>
+          <span class="quick-call-number">📞 #1301</span>
+        </a>
+        <a href="tel:034789618,1502" class="quick-call-btn" onclick="playPhoneDialSound()">
+          <span class="quick-call-label">輔導主任 (諮商關懷)</span>
+          <span class="quick-call-number">📞 #1502</span>
+        </a>
+        <a href="tel:113" class="quick-call-btn" style="border-color: #E11D48; background: #FFF1F2;" onclick="playPhoneDialSound()">
+          <span class="quick-call-label">全國保護專線</span>
+          <span class="quick-call-number" style="color: #BE123C;">🛡️ 113</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 主要內容區 (五大分頁面板) -->
+    <main class="main-container">
+
+      <!-- =========================================================
+           頁籤 1: 楊梅高中各處室分機一覽表 (具有檢索與快速複製撥號)
+           ========================================================= -->
+      <section id="panelExtensions" class="view-panel active">
+        <div id="extContainer">
+          <!-- 動態渲染分機列表或篩選結果 -->
+        </div>
+      </section>
+
+      <!-- =========================================================
+           頁籤 2: 校園性別事件通報及調查處理程序 (依 114 年 PDF 完整還原)
+           ========================================================= -->
+      <section id="panelFlowchart" class="view-panel">
+        
+        <div class="flow-intro-card">
+          <h2>
+            <span>🛡️ 校園性別事件處理流程</span>
+          </h2>
+          <p style="font-size: var(--body-size); opacity: 0.95;">
+            依教育部「校園性別事件通報及調查處理程序參考流程圖」114年2月3日最新修訂版製作。
+          </p>
+          <div style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <span class="flow-version-tag">📌 202501修訂結案版</span>
+            <span class="flow-version-tag">⚡ 24H法定通報</span>
+            <span class="flow-version-tag">⚖️ 性平法第32條</span>
+          </div>
+        </div>
+
+        <!-- 流程步驟互動時間軸 -->
+        <div class="flow-timeline">
+
+          <!-- 步驟 1: 知悉與通報 -->
+          <div class="flow-step-node step-urgent">
+            <div class="node-pin">1</div>
+            <div class="node-card">
+              <div class="node-header" onclick="toggleAccordion(this)">
+                <div class="node-header-title">
+                  <span>🚨 1. 獲知疑似事件與法定通報</span>
+                  <span class="deadline-badge deadline-urgent">⏱️ 時限 24 小時內</span>
+                </div>
+                <span>▼</span>
+              </div>
+              <div class="node-body">
+                <div class="node-body-content">
+                  <p><strong>【教職員工第一動】：獲知疑似校園性別事件時</strong></p>
+                  <ul class="bullet-list">
+                    <li><strong>第一時間緊急通報：</strong>先以口頭或電話聯繫學校通報權責人員（生輔組 <strong>#1352</strong>、學務主任 <strong>#1301</strong>）。</li>
+                    <li><strong>書面填報：</strong>填寫各類校安事件告知單交予通報權責人員。</li>
+                  </ul>
+
+                  <div class="note-box note-critical">
+                    <strong>⚠️ 學務處(秘書單位)通報職責：</strong>
+                    <ol style="margin-left: 18px; margin-top: 4px;">
+                      <li><strong>法定責任通報：</strong>至「關懷 e 起來」網站、通報當地家庭暴力及性侵害防治中心或社會局/處。<br>
+                      <em>※重要例外：已滿 18 歲之人非兒童少年之疑似性騷擾事件，無須進行社政通報。</em></li>
+                      <li><strong>校安通報：</strong>依規定實施教育部校安通報。行為人為教師身分者，通知教評會審議暫時停聘。</li>
+                      <li><strong>告知權利：</strong>鼓勵被害人、其法定代理人或實際照顧者申請調查，或由學校提出檢舉。</li>
+                      <li><strong>指派專人：</strong>指派專責人員處理相關行政事宜。</li>
+                      <li><strong>陳報主委：</strong>陳報性平會主任委員（校長），聯繫召開性平會。</li>
+                      <li><strong>心理關懷：</strong>通知諮商輔導單位（輔導室 <strong>#1502</strong>），視當事人需要提供諮商輔導與協助。</li>
+                    </ol>
+                  </div>
+
+                  <div class="branch-box">
+                    <div class="branch-card">
+                      <div class="branch-card-title">🏢 學校無管轄權之情形（時限：7日內）</div>
+                      <p style="font-size: var(--small-size); color: #475569;">
+                        如：校長為行為人、跨校事件非管轄學校等。應於 <strong>7 日內</strong> 移轉權責機關並書面通知當事人。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 步驟 2: 申請調查或檢舉與受理審查 -->
+          <div class="flow-step-node step-accept">
+            <div class="node-pin">2</div>
+            <div class="node-card">
+              <div class="node-header" onclick="toggleAccordion(this)">
+                <div class="node-header-title">
+                  <span>⚖️ 2. 申請調查/檢舉與受理議決</span>
+                  <span class="deadline-badge deadline-warning">⏱️ 3日內送交 / 20日內通知</span>
+                </div>
+                <span>▼</span>
+              </div>
+              <div class="node-body">
+                <div class="node-body-content">
+                  <p><strong>接獲申請調查或檢舉後，3日內送性別平等教育委員會。</strong></p>
+                  <p style="margin-top: 6px;">性平會依據<strong>性平法第 32 條</strong>進行受理議決：</p>
+
+                  <div class="branch-box">
+                    <!-- 受理分支 -->
+                    <div class="branch-card accepted">
+                      <div class="branch-card-title" style="color: #166534;">✅ 議決受理（無不受理之情形）</div>
+                      <p style="font-size: var(--small-size);"><strong>20日內</strong>以書面通知申請人、被害人或檢舉人是否受理。</p>
+                      
+                      <!-- 受理後四軌並行 -->
+                      <div class="parallel-grid">
+                        <div class="parallel-card track-a">
+                          <div class="track-title" style="color: #1E40AF;">📢 指定媒體發言專責人員</div>
+                          <p style="font-size: var(--small-size);">由學校指定專責發言人，統一校外發言與新聞處理。</p>
+                        </div>
+                        <div class="parallel-card track-b">
+                          <div class="track-title" style="color: #065F46;">📚 教務處/系所主管</div>
+                          <p style="font-size: var(--small-size);">協助彈性調整當事人課程或教學事宜、評量彈性維護就學權。</p>
+                        </div>
+                        <div class="parallel-card track-c">
+                          <div class="track-title" style="color: #9D174D;">💚 諮商輔導單位 / 關懷小組</div>
+                          <p style="font-size: var(--small-size);">
+                            1. 輔導人員進行關懷（含當事人、家長、相關班級師生）。<br>
+                            2. 建立並妥善保存個案輔導紀錄。<br>
+                            3. 擬定與執行追蹤輔導計畫。<br>
+                            4. 校外行政協調（協助性侵害防治中心社工師陪同等）。
+                          </p>
+                        </div>
+                        <div class="parallel-card track-d">
+                          <div class="track-title" style="color: #92400E;">📝 秘書單位（學務處）執行項目</div>
+                          <p style="font-size: var(--small-size);">
+                            1. 通知法定代理人。<br>
+                            2. 執行性平會決議（發聘調查小組等）。<br>
+                            3. 發文通知受理否與陳報回報系統。<br>
+                            4. 協調彈性處理出缺勤、學籍與課程。<br>
+                            5. 整合校內外法律/諮商資源。<br>
+                            6. 嚴格約制<strong>禁止報復</strong>，會議列管。<br>
+                            7. 卷宗密件送文書保存。<br>
+                            8. 案件懲處與追蹤完成後回報系統結案。
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- 不受理分支 -->
+                    <div class="branch-card rejected">
+                      <div class="branch-card-title" style="color: #9F1239;">❌ 議決不受理（有不受理情形）</div>
+                      <p style="font-size: var(--small-size); color: #881337;">
+                        20日內書面通知申請人、被害人或檢舉人。當事人若不服，得於 <strong>20日內</strong> 提出申復（以 1 次為限）。
+                        <br><em>※申復有理由者，交性平會重新審理。</em>
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 步驟 3: 調查小組調查程序 -->
+          <div class="flow-step-node step-investigate">
+            <div class="node-pin">3</div>
+            <div class="node-card">
+              <div class="node-header" onclick="toggleAccordion(this)">
+                <div class="node-header-title">
+                  <span>🔍 3. 組成調查小組與撰寫報告</span>
+                  <span class="deadline-badge deadline-info">3人或5人小組</span>
+                </div>
+                <span>▼</span>
+              </div>
+              <div class="node-body">
+                <div class="node-body-content">
+                  <ul class="bullet-list">
+                    <li><strong>組成專業調查小組：</strong>由 3 人或 5 人組成（由性平會議決人選，或授權由主任委員與專人協調後聯繫）。成員女性比例及性平專業人才庫資格須依法規符合。</li>
+                    <li><strong>調查與訪談：</strong>依程序進行客觀、公正、專業之雙方當事人及相關證人訪談，撰寫正式調查報告。</li>
+                  </ul>
+                  <div class="note-box note-info">
+                    <strong>📌 備註說明：</strong>
+                    未組調查小組而由性平會自行處理之案件，仍須依法向學校提出完整調查報告（依性平法施行細則第 17 條規定內容）。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 步驟 4: 性平會議決與處置 -->
+          <div class="flow-step-node">
+            <div class="node-pin">4</div>
+            <div class="node-card">
+              <div class="node-header" onclick="toggleAccordion(this)">
+                <div class="node-header-title">
+                  <span>📋 4. 議決通過調查報告及處理建議</span>
+                  <span class="deadline-badge deadline-info">性平法第26條</span>
+                </div>
+                <span>▼</span>
+              </div>
+              <div class="node-body">
+                <div class="node-body-content">
+                  <ol style="margin-left: 20px; line-height: 1.6;">
+                    <li><strong>通過調查報告及處理建議：</strong>性平會議決確認事實，並依性平法第 26 條提出處置（心理諮商、性平教育課程、向被害人道歉等）。</li>
+                    <li><strong>議處改變身分者：</strong>通知行為人陳述意見，召開第 2 次性平會。</li>
+                    <li><strong>備齊陳報資料：</strong>備齊性平會會議紀錄（含簽到表）、調查報告，陳報所屬主管機關備查。</li>
+                  </ol>
+
+                  <div style="margin-top: 10px; background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: var(--radius-sm); padding: 10px;">
+                    <strong>🏛️ 權責懲處機關分流：</strong>
+                    <div style="display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap;">
+                      <span class="duty-tag" style="background: #FEE2E2; color: #991B1B;">教師評審委員會 (解聘/1-4年/管制終身)</span>
+                      <span class="duty-tag" style="background: #E0E7FF; color: #3730A3;">考績委員會 (公務員/行政人員懲處)</span>
+                      <span class="duty-tag" style="background: #DCFCE7; color: #166534;">學生獎懲委員會 (學生身分懲處)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 步驟 5: 申復與救濟途徑 (重要核心) -->
+          <div class="flow-step-node step-remedy">
+            <div class="node-pin">5</div>
+            <div class="node-card">
+              <div class="node-header" onclick="toggleAccordion(this)">
+                <div class="node-header-title">
+                  <span>⚖️ 5. 申復程序與身分救濟途徑</span>
+                  <span class="deadline-badge deadline-urgent">⏱️ 30 日內提出</span>
+                </div>
+                <span>▼</span>
+              </div>
+              <div class="node-body">
+                <div class="node-body-content">
+                  <p><strong>【申復（為申訴之先行程序）】：</strong></p>
+                  <ul class="bullet-list">
+                    <li>不服處理結果者，申請人（被害人）及行為人可於接獲通知書次日起 <strong>30 日內</strong> 向學校提出申復（以 <strong>1 次</strong> 為限）。</li>
+                    <li><strong>收件單位：</strong>由學校指定專責單位，另簽組「申復審議小組」。</li>
+                    <li><em>若行為人為校長或教職員工時，申請人（被害人）得逕向主管機關提出申復。</em></li>
+                    <li><strong>申復有理由：</strong>視申復決定書理由，交由學校性平會重啟調查或重新議決，或交由權責單位重為決定。</li>
+                  </ul>
+
+                  <!-- 不服申復之救濟途徑 -->
+                  <div class="note-box note-warning" style="margin-top: 12px;">
+                    <strong>📜 依據性平法進行申復後之各身分救濟管道（接獲書面通知次日起 30 日內）：</strong>
+                    <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 6px;">
+                      <div>👨‍🏫 <strong>教師：</strong>依《教師法》向各級教師申訴評議委員會提出申訴。</div>
+                      <div>👔 <strong>公立學校職員：</strong>依《公務人員保障法》相關規定提起復審/救濟。</div>
+                      <div>🛠️ <strong>私立職員/工友：</strong>依《勞動基準法》相關勞動爭議法令規定提起救濟。</div>
+                      <div>🎒 <strong>學生：</strong>向所屬學校提出申訴（送交「學生申訴評議委員會」）。</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 步驟 6: 後續追蹤與校務評鑑 -->
+          <div class="flow-step-node">
+            <div class="node-pin">6</div>
+            <div class="node-card">
+              <div class="node-header" onclick="toggleAccordion(this)">
+                <div class="node-header-title">
+                  <span>📊 6. 彙整報告、持續輔導與校務評鑑</span>
+                </div>
+                <span>▼</span>
+              </div>
+              <div class="node-body">
+                <div class="node-body-content">
+                  <ul class="bullet-list">
+                    <li><strong>秘書單位：</strong>彙整完整處理報告與卷宗檔案。</li>
+                    <li><strong>持續改善：</strong>各處室本於個案工作任務檢討改善，持續追蹤與關懷輔導。</li>
+                    <li><strong>校務評鑑：</strong>性平事件處置成效列入學校校務評鑑重點項目。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =========================================================
+           頁籤 3: 流程實用互動工具 (24H計算機 & 救濟管道精靈)
+           ========================================================= -->
+      <section id="panelTools" class="view-panel">
+        
+        <!-- 工具 1: 24小時通報黃金時限倒數與檢核清單 -->
+        <div class="tool-card">
+          <div class="tool-card-title">
+            <span>⏱️ 24小時通報時效計算與檢核表</span>
+          </div>
+          <p class="tool-desc">
+            法定要求：學校教職員工獲知疑似事件起，必須在 24 小時內完成通報！請輸入獲知時間，系統將自動計算截止時限。
+          </p>
+
+          <div class="countdown-widget">
+            <div class="countdown-label">距離法定通報截止還剩餘</div>
+            <div class="countdown-digits" id="timerDigits">24:00:00</div>
+            <div class="countdown-status" id="timerStatus">🟢 請設定獲知疑似事件時間</div>
+          </div>
+
+          <div class="datetime-input-group">
+            <input type="datetime-local" id="reportEventTime" class="datetime-input">
+            <button class="calc-btn" id="calcTimerBtn" onclick="calculateDeadline()">
+              <span>計算</span>
+            </button>
+          </div>
+
+          <div style="font-weight: 700; margin-top: 14px; font-size: var(--body-size); display: flex; justify-content: space-between;">
+            <span>📋 法定通報 6 大動作檢核清單：</span>
+            <span id="checkProgressBadge" style="color: var(--primary);">0 / 6 完成</span>
+          </div>
+
+          <div class="checklist-container" id="checklistContainer">
+            <label class="check-item" onclick="handleCheck(this)">
+              <input type="checkbox" class="check-checkbox">
+              <span class="check-text">1. 緊急口頭/電話聯繫通報權責人員（生輔組 <strong>#1352</strong> 或學務主任 <strong>#1301</strong>）</span>
+            </label>
+            <label class="check-item" onclick="handleCheck(this)">
+              <input type="checkbox" class="check-checkbox">
+              <span class="check-text">2. 填寫「各類校安事件告知單」交予通報權責人員</span>
+            </label>
+            <label class="check-item" onclick="handleCheck(this)">
+              <input type="checkbox" class="check-checkbox">
+              <span class="check-text">3. 秘書單位完成社政通報（關懷 e 起來網站，滿18歲性騷除外）</span>
+            </label>
+            <label class="check-item" onclick="handleCheck(this)">
+              <input type="checkbox" class="check-checkbox">
+              <span class="check-text">4. 完成教育部校安系統通報（教師身分通知教評會審議暫停聘）</span>
+            </label>
+            <label class="check-item" onclick="handleCheck(this)">
+              <input type="checkbox" class="check-checkbox">
+              <span class="check-text">5. 陳報性平會主委（校長），聯繫召開性別平等教育委員會</span>
+            </label>
+            <label class="check-item" onclick="handleCheck(this)">
+              <input type="checkbox" class="check-checkbox">
+              <span class="check-text">6. 通知輔導室（<strong>#1502</strong>）啟動心理諮商關懷小組</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 工具 2: 身分救濟管道互動精靈 -->
+        <div class="tool-card">
+          <div class="tool-card-title">
+            <span>🧭 當事人身分救濟管道速查精靈</span>
+          </div>
+          <p class="tool-desc">
+            若對申復審議結果不服，請點選您的當事人身分，即時查看依性平法接獲書面通知次日起 30 日內適用的救濟管道：
+          </p>
+
+          <div class="role-selector">
+            <button class="role-btn active" data-role="teacher" onclick="selectRole('teacher')">
+              <span class="role-icon">👨‍🏫</span>
+              <span>教師身分</span>
+            </button>
+            <button class="role-btn" data-role="staff" onclick="selectRole('staff')">
+              <span class="role-icon">👔</span>
+              <span>公立學校職員</span>
+            </button>
+            <button class="role-btn" data-role="worker" onclick="selectRole('worker')">
+              <span class="role-icon">🛠️</span>
+              <span>私立職員 / 工友</span>
+            </button>
+            <button class="role-btn" data-role="student" onclick="selectRole('student')">
+              <span class="role-icon">🎒</span>
+              <span>學生身分</span>
+            </button>
+          </div>
+
+          <div id="roleRemedyResult" class="remedy-result-card">
+            <!-- 動態渲染所選身分救濟指引 -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =========================================================
+           頁籤 4: 官方流程圖與楊梅高中安全地圖
+           ========================================================= -->
+      <section id="panelMap" class="view-panel">
+        
+        <div class="map-card">
+          <h3>
+            <span>📄 教育部最新官方流程圖原件</span>
+          </h3>
+          <p style="font-size: var(--small-size); color: var(--text-muted);">
+            點擊可放大檢視「校園性別事件通報及調查處理程序參考流程圖 (114年2月3日結案版)」全圖
+          </p>
+          <div class="img-preview-box" onclick="openImageModal('assets/img/flowchart_full.jpg', '校園性別事件通報及調查處理程序參考流程圖 (202501修訂結案版)')">
+            <img src="assets/img/flowchart_full.jpg" alt="性平流程圖原圖" loading="lazy">
+            <div class="zoom-hint-pill">🔍 點擊查看高清大圖</div>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <h3>
+            <span>🏫 楊梅高中校園安全地圖</span>
+          </h3>
+          <p style="font-size: var(--small-size); color: var(--text-muted);">
+            桃園市立楊梅高級中等學校校園安全死角巡查、各棟大樓與緊急聯絡求助點
+          </p>
+          <div class="img-preview-box" onclick="openImageModal('assets/img/yangmei_safety_map.jpg', '桃園市立楊梅高級中等學校校園安全地圖')">
+            <img src="assets/img/yangmei_safety_map.jpg" alt="楊梅高中校園安全地圖" loading="lazy">
+            <div class="zoom-hint-pill">🔍 點擊查看安全地圖</div>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <h3>
+            <span>📑 QA 手冊編修計畫封面</span>
+          </h3>
+          <p style="font-size: var(--small-size); color: var(--text-muted);">
+            教育部校園性別事件防治與處理 QA 手冊附冊二_2-1 結案正式公文存檔
+          </p>
+          <div class="img-preview-box" onclick="openImageModal('assets/img/pdf_page1.jpg', '校園性別事件防治與處理 QA 手冊 附冊二_2-1')">
+            <img src="assets/img/pdf_page1.jpg" alt="手冊封面" loading="lazy">
+            <div class="zoom-hint-pill">🔍 點擊檢視</div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =========================================================
+           頁籤 5: 相關法規與外部專線
+           ========================================================= -->
+      <section id="panelAbout" class="view-panel">
+        
+        <div class="about-card">
+          <h3>
+            <span>🏛️ 學校基本資訊</span>
+          </h3>
+          <div style="font-size: var(--body-size); line-height: 1.8;">
+            <div><strong>學校名稱：</strong>桃園市立楊梅高級中等學校</div>
+            <div><strong>學校總機：</strong>(03) 478-9618</div>
+            <div><strong>行政傳真：</strong>(03) 478-0164</div>
+            <div><strong>教官室傳真：</strong>(03) 478-0428</div>
+            <div><strong>輔導室專線：</strong>(03) 475-8437</div>
+            <div><strong>學校地址：</strong>326 桃園市楊梅區高獅路5號</div>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h3>
+            <span>🌐 外部法定與緊急求助資源</span>
+          </h3>
+          <div class="external-hotline-list">
+            <a href="tel:113" class="hotline-item" onclick="playPhoneDialSound()">
+              <div class="hotline-title">
+                <span>🛡️ 全國保護專線 (家暴/性侵/性騷)</span>
+              </div>
+              <div class="hotline-num">113</div>
+            </a>
+            <a href="tel:110" class="hotline-item" onclick="playPhoneDialSound()">
+              <div class="hotline-title">
+                <span>🚔 警察局報案專線</span>
+              </div>
+              <div class="hotline-num">110</div>
+            </a>
+            <a href="tel:033322111" class="hotline-item" onclick="playPhoneDialSound()">
+              <div class="hotline-title">
+                <span>🏛️ 桃園市家庭暴力暨性侵害防治中心</span>
+              </div>
+              <div class="hotline-num">(03) 332-2111</div>
+            </a>
+            <a href="tel:033322101" class="hotline-item" onclick="playPhoneDialSound()">
+              <div class="hotline-title">
+                <span>🎓 教育部校安通報中心專線</span>
+              </div>
+              <div class="hotline-num">(03) 332-2101</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h3>
+            <span>⚖️ 適用法規與依據</span>
+          </h3>
+          <div class="law-item">
+            <strong>《性別平等教育法》：</strong>第26條處置、第32條受理規定、調查小組組成標準。
+          </div>
+          <div class="law-item">
+            <strong>《性別平等教育法施行細則》：</strong>第17條調查報告應載明內容。
+          </div>
+          <div class="law-item">
+            <strong>《校園性別事件防治準則》：</strong>校園通報程序與當事人隱私保密規定。
+          </div>
+          <div class="law-item">
+            <strong>《兒童及少年福利與權益保障法》：</strong>未滿18歲兒少案件之社政責任通報義務。
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- 手機底部功能導航 Dock Bar -->
+    <nav class="bottom-dock">
+      <button class="dock-btn active" data-target="panelExtensions" onclick="switchDockTab(this, 'panelExtensions')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>分機一覽</span>
+      </button>
+
+      <button class="dock-btn" data-target="panelFlowchart" onclick="switchDockTab(this, 'panelFlowchart')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>性平流程</span>
+      </button>
+
+      <button class="dock-btn" data-target="panelTools" onclick="switchDockTab(this, 'panelTools')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>時效/救濟</span>
+      </button>
+
+      <button class="dock-btn" data-target="panelMap" onclick="switchDockTab(this, 'panelMap')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+          <line x1="8" y1="2" x2="8" y2="18"></line>
+          <line x1="16" y1="6" x2="16" y2="22"></line>
+        </svg>
+        <span>地圖/原圖</span>
+      </button>
+
+      <button class="dock-btn" data-target="panelAbout" onclick="switchDockTab(this, 'panelAbout')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <span>關於/資源</span>
+      </button>
+    </nav>
+
+    <!-- 浮動 Toast 提示 -->
+    <div id="toast" class="toast-msg">
+      <span id="toastIcon">📋</span>
+      <span id="toastText">已複製分機號碼！</span>
+    </div>
+
+    <!-- 大圖預覽全螢幕 Modal -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal(event)">
+      <button class="modal-close-btn" onclick="closeImageModal(event)">✕</button>
+      <div class="modal-img-container" onclick="event.stopPropagation()">
+        <img id="modalImg" src="" alt="預覽圖">
+      </div>
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+  </div>
+
+  <!-- =========================================================
+       JavaScript 核心互動邏輯與音效合成引擎
+       ========================================================= -->
+  <script>
+    /* =========================================================
+       1. 楊梅高中分機資料集 (整合校園各處室與性平權責)
+       ========================================================= */
+    const YANGMEI_EXTENSIONS = [
+      {
+        department: "學務處 (校安/性平秘書專責)",
+        category: "student",
+        isEmergency: true,
+        items: [
+          {
+            role: "學務主任",
+            name: "呂主任",
+            ext: "1301",
+            isGenderRole: true,
+            duty: "綜理學務處各項業務、性平會執行秘書、校安事件通報權責督導",
+            tags: ["性平秘書", "緊急通報", "校安主管"]
+          },
+          {
+            role: "生輔組長 (校安通報)",
+            name: "張組長",
+            ext: "1352",
+            isGenderRole: true,
+            duty: "校安中心負責人、第一時間校安通報填報、生活輔導與緊急聯繫",
+            tags: ["24H校安通報", "生輔組", "緊急聯絡"]
+          },
+          {
+            role: "訓育組長",
+            name: "簡組長",
+            ext: "1311",
+            isGenderRole: true,
+            duty: "性平宣導教育活動、班聯會、品德教育業務",
+            tags: ["性平宣導", "學生事務"]
+          },
+          {
+            role: "訓育組幹事",
+            name: "幹事",
+            ext: "1312",
+            isGenderRole: false,
+            duty: "訓育行政與活動協辦",
+            tags: ["行政支援"]
+          },
+          {
+            role: "健康中心 (護理師)",
+            name: "校護",
+            ext: "1119",
+            isGenderRole: true,
+            duty: "緊急傷病救護、被害人驗傷協助與醫療處置評估",
+            tags: ["傷病救護", "醫療評估", "健康諮詢"]
+          },
+          {
+            role: "健康中心分機2",
+            name: "護理師",
+            ext: "1342",
+            isGenderRole: false,
+            duty: "學生衛保與健康中心業務",
+            tags: ["健康中心"]
+          },
+          {
+            role: "衛生組長",
+            name: "詹組長",
+            ext: "1341",
+            isGenderRole: false,
+            duty: "校園環境衛生、衛教宣導",
+            tags: ["衛生管理"]
+          },
+          {
+            role: "體育組長",
+            name: "廖組長",
+            ext: "1331",
+            isGenderRole: false,
+            duty: "體育活動、校隊管理",
+            tags: ["體育教學"]
+          },
+          {
+            role: "活動組長",
+            name: "魏組長",
+            ext: "1321",
+            isGenderRole: false,
+            duty: "社團活動與校園大型活動策劃",
+            tags: ["社團活動"]
+          }
+        ]
+      },
+      {
+        department: "輔導室 (諮商輔導/關懷小組)",
+        category: "counsel",
+        isEmergency: true,
+        items: [
+          {
+            role: "輔導主任",
+            name: "陳主任",
+            ext: "1502",
+            isGenderRole: true,
+            duty: "性平事件當事人諮商關懷小組召集人、追蹤輔導計畫擬定與社工橫向協調",
+            tags: ["諮商關懷小組", "社工協調", "專線(03)475-8437"]
+          },
+          {
+            role: "輔導老師 / 特教教師",
+            name: "輔導教師群",
+            ext: "1501",
+            isGenderRole: true,
+            duty: "個別心理諮商、班級師生心理減壓與心理創傷復原輔導",
+            tags: ["心理諮商", "特教輔導", "學生關懷"]
+          },
+          {
+            role: "輔導老師室 (分機3)",
+            name: "輔導教師",
+            ext: "1503",
+            isGenderRole: true,
+            duty: "性平事件當事人與班級輔導諮商",
+            tags: ["個案輔導"]
+          },
+          {
+            role: "輔導老師室 (分機4)",
+            name: "輔導教師",
+            ext: "1504",
+            isGenderRole: false,
+            duty: "生涯輔導、心理測驗評量",
+            tags: ["輔導諮詢"]
+          },
+          {
+            role: "特教業務分機",
+            name: "特教專責",
+            ext: "1505",
+            isGenderRole: false,
+            duty: "特殊教育資源與個別化支援計畫",
+            tags: ["特教資源"]
+          },
+          {
+            role: "資源教室",
+            name: "輔導老師",
+            ext: "1506",
+            isGenderRole: false,
+            duty: "身心特質學生諮詢與專責輔導",
+            tags: ["資源教室"]
+          }
+        ]
+      },
+      {
+        department: "教務處 (彈性課程與教學調整)",
+        category: "academic",
+        isEmergency: false,
+        items: [
+          {
+            role: "教務主任",
+            name: "李主任",
+            ext: "1201",
+            isGenderRole: true,
+            duty: "性平事件當事人課業學習彈性調整、教學彈性維護及教務主管",
+            tags: ["課業調整", "學習權益", "教務主管"]
+          },
+          {
+            role: "教學組長",
+            name: "邱組長",
+            ext: "1211",
+            isGenderRole: true,
+            duty: "課程排定、彈性教學進度、課業輔導安排",
+            tags: ["課程彈性", "排課調課"]
+          },
+          {
+            role: "教學組幹事",
+            name: "幹事",
+            ext: "1212",
+            isGenderRole: false,
+            duty: "教學行政支援業務",
+            tags: ["教學行政"]
+          },
+          {
+            role: "註冊組長",
+            name: "賴組長",
+            ext: "1221",
+            isGenderRole: true,
+            duty: "學籍管理、成績評量彈性維護、成績登錄",
+            tags: ["學籍管理", "成績彈性"]
+          },
+          {
+            role: "註冊組幹事",
+            name: "幹事",
+            ext: "1222",
+            isGenderRole: false,
+            duty: "成績單申請、學籍紀錄核發",
+            tags: ["學籍表件"]
+          },
+          {
+            role: "設備組長",
+            name: "鄭組長",
+            ext: "1231",
+            isGenderRole: false,
+            duty: "教學設備、實驗器材管理",
+            tags: ["教學設備"]
+          },
+          {
+            role: "實驗研究組長",
+            name: "邱組長",
+            ext: "1241",
+            isGenderRole: false,
+            duty: "實驗班規劃、各項專題研究業務",
+            tags: ["研究計畫"]
+          },
+          {
+            role: "試務組長",
+            name: "蘇組長",
+            ext: "1251",
+            isGenderRole: false,
+            duty: "定期考查、模擬考與試務考查彈性安排",
+            tags: ["試務考查"]
+          }
+        ]
+      },
+      {
+        department: "總務處 (校園空間安全與密件卷宗)",
+        category: "general",
+        isEmergency: false,
+        items: [
+          {
+            role: "總務主任",
+            name: "劉主任",
+            ext: "1401",
+            isGenderRole: false,
+            duty: "校園環境安全整體規劃、安全地圖檢視、各項工程修繕",
+            tags: ["校園安全防護", "環境安全"]
+          },
+          {
+            role: "文書組長",
+            name: "林組長",
+            ext: "1411",
+            isGenderRole: true,
+            duty: "性平會調查報告密件歸檔保存、公文收發與密件保密管理",
+            tags: ["密件卷宗保存", "檔案管理"]
+          },
+          {
+            role: "出納組長",
+            name: "劉組長",
+            ext: "1421",
+            isGenderRole: false,
+            duty: "出納管理與經費核銷",
+            tags: ["財務出納"]
+          },
+          {
+            role: "庶務組長",
+            name: "黃組長",
+            ext: "1431",
+            isGenderRole: false,
+            duty: "校園照明監視系統維護、修繕採購",
+            tags: ["照明監控維護", "庶務修繕"]
+          }
+        ]
+      },
+      {
+        department: "圖書館、人事室與校長室",
+        category: "other",
+        isEmergency: false,
+        items: [
+          {
+            role: "校長室",
+            name: "校長秘書",
+            ext: "1101",
+            isGenderRole: true,
+            duty: "性平會主任委員（校長）行政秘書聯繫、重大事件通報",
+            tags: ["性平會主委聯繫", "重大通報"]
+          },
+          {
+            role: "人事室主任",
+            name: "主任",
+            ext: "1121",
+            isGenderRole: true,
+            duty: "教評會/考績會教職員懲處與身分停聘案件審議程序辦理",
+            tags: ["教評會專責", "教職員停聘", "考績會"]
+          },
+          {
+            role: "人事室組員",
+            name: "組員",
+            ext: "1122",
+            isGenderRole: false,
+            duty: "教職員差假與人事行政",
+            tags: ["人事差假"]
+          },
+          {
+            role: "圖書館主任",
+            name: "施主任",
+            ext: "1601",
+            isGenderRole: false,
+            duty: "圖書館業務管理、性平教育好書閱讀推廣",
+            tags: ["閱讀推廣"]
+          },
+          {
+            role: "讀者服務組",
+            name: "組長",
+            ext: "1602",
+            isGenderRole: false,
+            duty: "館藏借閱與讀者服務",
+            tags: ["館藏服務"]
+          },
+          {
+            role: "資訊媒體組",
+            name: "組長",
+            ext: "1603",
+            isGenderRole: false,
+            duty: "校園網路、資訊系統維護與資安管理",
+            tags: ["校園網路", "系統維護"]
+          }
+        ]
+      }
+    ];
+
+    /* =========================================================
+       2. Web Audio API 音效引擎 (無外部檔案依賴，支援離線與即時反饋)
+       ========================================================= */
+    let audioCtx = null;
+    let isSoundEnabled = true;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // 輕巧的按鍵點擊音
+    function playTapSound() {
+      if (!isSoundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.05); // A5
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.06);
+      } catch(e) {}
+    }
+
+    // 成功/完成和弦音效
+    function playSuccessSound() {
+      if (!isSoundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          const startTime = ctx.currentTime + idx * 0.06;
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(freq, startTime);
+          gain.gain.setValueAtTime(0.14, startTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.22);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(startTime);
+          osc.stop(startTime + 0.22);
+        });
+      } catch(e) {}
+    }
+
+    // 電話撥號音效
+    function playPhoneDialSound() {
+      if (!isSoundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc1 = ctx.createOscillator();
+        const osc2 = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc1.frequency.setValueAtTime(697, ctx.currentTime);
+        osc2.frequency.setValueAtTime(1209, ctx.currentTime);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.18);
+        osc1.connect(gain);
+        osc2.connect(gain);
+        gain.connect(ctx.destination);
+        osc1.start();
+        osc2.start();
+        osc1.stop(ctx.currentTime + 0.18);
+        osc2.stop(ctx.currentTime + 0.18);
+      } catch(e) {}
+    }
+
+    // 提醒警告音效
+    function playAlertSound() {
+      if (!isSoundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sawtooth";
+        osc.frequency.setValueAtTime(440, ctx.currentTime);
+        osc.frequency.setValueAtTime(370, ctx.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.25);
+      } catch(e) {}
+    }
+
+    /* =========================================================
+       3. 字體縮放控制 (保證大字體，滿足「限制：不要太小」)
+       ========================================================= */
+    const fontLevels = ["normal", "medium", "large"];
+    let currentFontIdx = 0;
+    const fontScaleBtn = document.getElementById("fontScaleBtn");
+
+    fontScaleBtn.addEventListener("click", () => {
+      playTapSound();
+      currentFontIdx = (currentFontIdx + 1) % fontLevels.length;
+      const level = fontLevels[currentFontIdx];
+      document.documentElement.setAttribute("data-font", level);
+      
+      const labels = {
+        normal: "字A (標準)",
+        medium: "字A+ (舒適)",
+        large: "字A++ (特大)"
+      };
+      showToast(`🔤 已切換字體：${labels[level]}`);
+    });
+
+    // 音效開關切換
+    const soundToggleBtn = document.getElementById("soundToggleBtn");
+    const soundIcon = document.getElementById("soundIcon");
+    soundToggleBtn.addEventListener("click", () => {
+      isSoundEnabled = !isSoundEnabled;
+      soundIcon.textContent = isSoundEnabled ? "🔊" : "🔇";
+      if (isSoundEnabled) playTapSound();
+      showToast(isSoundEnabled ? "🔊 音效已開啟" : "🔇 音效已靜音");
+    });
+
+    /* =========================================================
+       4. 分機列表渲染與即時搜尋檢索系統
+       ========================================================= */
+    const extContainer = document.getElementById("extContainer");
+    const searchInput = document.getElementById("globalSearchInput");
+    const clearSearchBtn = document.getElementById("clearSearchBtn");
+    let activeFilter = "all";
+
+    function renderExtensions(query = "", category = "all") {
+      const q = query.trim().toLowerCase();
+      let html = "";
+      let totalMatches = 0;
+
+      YANGMEI_EXTENSIONS.forEach(group => {
+        // 篩選處室
+        if (category !== "all") {
+          if (category === "emergency" && !group.isEmergency) return;
+          if (category !== "emergency" && group.category !== category) return;
+        }
+
+        // 篩選項目
+        const matchedItems = group.items.filter(item => {
+          if (category === "emergency" && !item.isGenderRole && item.ext !== "1352" && item.ext !== "1301" && item.ext !== "1502") {
+            return false;
+          }
+          if (!q) return true;
+          return (
+            item.role.toLowerCase().includes(q) ||
+            item.name.toLowerCase().includes(q) ||
+            item.ext.includes(q) ||
+            item.duty.toLowerCase().includes(q) ||
+            group.department.toLowerCase().includes(q) ||
+            item.tags.some(tag => tag.toLowerCase().includes(q))
+          );
+        });
+
+        if (matchedItems.length === 0) return;
+        totalMatches += matchedItems.length;
+
+        html += `
+          <div class="dept-group">
+            <div class="dept-header">
+              <div class="dept-header-title">
+                <span>📁 ${group.department}</span>
+              </div>
+              <span class="dept-badge">${matchedItems.length} 項</span>
+            </div>
+            <div class="ext-cards-list">
+        `;
+
+        matchedItems.forEach(item => {
+          const isGender = item.isGenderRole;
+          const isSecurity = item.ext === "1352";
+          let cardClass = "ext-card";
+          if (isGender) cardClass += " highlight-gender";
+          if (isSecurity) cardClass += " highlight-security";
+
+          html += `
+            <div class="${cardClass}">
+              <div class="ext-card-main">
+                <div class="ext-info-col">
+                  <div class="ext-role-title">
+                    <span>${item.role}</span>
+                    <span class="ext-name">(${item.name})</span>
+                  </div>
+                  <div class="ext-duty">${item.duty}</div>
+                  <div style="margin-top: 6px;">
+                    ${item.tags.map(t => `<span class="duty-tag ${t.includes('性平') || t.includes('關懷') ? 'gender-tag' : ''}">#${t}</span>`).join('')}
+                  </div>
+                </div>
+                <div class="ext-actions-col">
+                  <div class="ext-number-badge" onclick="copyExtension('${item.ext}', '${item.role}')" title="點擊複製分機">
+                    <span>#${item.ext}</span>
+                  </div>
+                  <a href="tel:034789618,${item.ext}" class="call-btn-circle" onclick="playPhoneDialSound()" title="直撥 (03)478-9618 轉 ${item.ext}">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      if (totalMatches === 0) {
+        html = `
+          <div class="empty-search-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <h3 style="font-size: 1.2rem; color: #475569; margin-bottom: 6px;">查無相符的分機或職責</h3>
+            <p>請嘗試其他關鍵字（如：生輔組、輔導室、1301、性平、教評會）</p>
+          </div>
+        `;
+      }
+
+      extContainer.innerHTML = html;
+    }
+
+    // 搜尋輸入監聽
+    searchInput.addEventListener("input", (e) => {
+      const val = e.target.value;
+      clearSearchBtn.style.display = val ? "flex" : "none";
+      renderExtensions(val, activeFilter);
+      playTapSound();
+    });
+
+    clearSearchBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      clearSearchBtn.style.display = "none";
+      renderExtensions("", activeFilter);
+      playTapSound();
+      searchInput.focus();
+    });
+
+    // 分類 Chip 標籤點擊
+    document.querySelectorAll(".chip-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const filter = btn.dataset.filter;
+        if (!filter) return;
+        playTapSound();
+        document.querySelectorAll(".chip-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeFilter = filter;
+        
+        // 若點擊緊急或處室篩選，自動切回分機面板以利檢索瀏覽
+        switchDockTab(document.querySelector('.dock-btn[data-target="panelExtensions"]'), "panelExtensions");
+        renderExtensions(searchInput.value, activeFilter);
+      });
+    });
+
+    // 快捷緊急指引按鈕
+    document.getElementById("quickReportBtn").addEventListener("click", () => {
+      playAlertSound();
+      switchDockTab(document.querySelector('.dock-btn[data-target="panelFlowchart"]'), "panelFlowchart");
+      showToast("🚨 已切換至 24小時通報處理流程！");
+    });
+
+    /* =========================================================
+       5. 複製分機與 Toast 提示
+       ========================================================= */
+    function copyExtension(ext, role) {
+      playSuccessSound();
+      navigator.clipboard.writeText(ext).then(() => {
+        showToast(`📋 已複製 ${role} 分機 #${ext}！`);
+      }).catch(() => {
+        showToast(`📞 楊梅高中分機：#${ext}`);
+      });
+    }
+
+    let toastTimeout = null;
+    function showToast(text, icon = "🔔") {
+      const toast = document.getElementById("toast");
+      const toastText = document.getElementById("toastText");
+      const toastIcon = document.getElementById("toastIcon");
+      toastText.textContent = text;
+      toastIcon.textContent = icon;
+      toast.classList.add("show");
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+    }
+
+    /* =========================================================
+       6. 頁籤切換邏輯 (手機 Dock Bar 支援)
+       ========================================================= */
+    function switchDockTab(btn, targetPanelId) {
+      playTapSound();
+      // 導航圖示狀態切換
+      document.querySelectorAll(".dock-btn").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+
+      // 面板切換
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      const targetPanel = document.getElementById(targetPanelId);
+      if (targetPanel) {
+        targetPanel.classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+
+    /* =========================================================
+       7. 折疊手風琴 Accordion (性平流程各階段展開/收合)
+       ========================================================= */
+    function toggleAccordion(header) {
+      playTapSound();
+      const nodeCard = header.closest(".node-card");
+      const body = nodeCard.querySelector(".node-body");
+      const arrow = header.querySelector("span:last-child");
+      
+      if (body.style.display === "none") {
+        body.style.display = "block";
+        arrow.textContent = "▼";
+      } else {
+        body.style.display = "none";
+        arrow.textContent = "▶";
+      }
+    }
+
+    /* =========================================================
+       8. 24小時黃金時限計算器與檢核清單
+       ========================================================= */
+    let deadlineTimerInterval = null;
+
+    function initTimerDefault() {
+      const now = new Date();
+      // 預設填入現在時間
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById("reportEventTime").value = `${year}-${month}-${day}T${hours}:${minutes}`;
+      calculateDeadline();
+    }
+
+    function calculateDeadline() {
+      const inputVal = document.getElementById("reportEventTime").value;
+      if (!inputVal) {
+        showToast("⚠️ 請選擇知悉事件的時間！");
+        return;
+      }
+      playTapSound();
+
+      const eventTime = new Date(inputVal).getTime();
+      const deadline = eventTime + (24 * 60 * 60 * 1000); // 24小時後
+
+      if (deadlineTimerInterval) clearInterval(deadlineTimerInterval);
+
+      function updateCountdown() {
+        const current = new Date().getTime();
+        const diff = deadline - current;
+
+        const timerDigits = document.getElementById("timerDigits");
+        const timerStatus = document.getElementById("timerStatus");
+
+        if (diff <= 0) {
+          timerDigits.textContent = "00:00:00";
+          timerDigits.style.color = "#EF4444";
+          timerStatus.innerHTML = "🚨 <strong>已逾 24 小時法定通報時限！</strong>請儘速補正通報程序！";
+          return;
+        }
+
+        const hrs = Math.floor(diff / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const pad = (n) => String(n).padStart(2, '0');
+        timerDigits.textContent = `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
+
+        if (hrs < 4) {
+          timerDigits.style.color = "#EF4444";
+          timerStatus.innerHTML = `⚠️ <strong>緊急警戒：</strong>距法定截止僅剩不足 4 小時！`;
+        } else if (hrs < 12) {
+          timerDigits.style.color = "#F59E0B";
+          timerStatus.innerHTML = `⏳ <strong>時限提醒：</strong>請加緊完成 6 項法定程序！`;
+        } else {
+          timerDigits.style.color = "#38BDF8";
+          timerStatus.innerHTML = `🟢 <strong>時限內運作中：</strong>請依序檢核通報事項。`;
+        }
+      }
+
+      updateCountdown();
+      deadlineTimerInterval = setInterval(updateCountdown, 1000);
+      showToast("⏱️ 已更新 24 小時截止倒數！");
+    }
+
+    // 檢核勾選
+    function handleCheck(labelElem) {
+      const checkbox = labelElem.querySelector(".check-checkbox");
+      // 延遲更新 class
+      setTimeout(() => {
+        if (checkbox.checked) {
+          labelElem.classList.add("done");
+          playSuccessSound();
+        } else {
+          labelElem.classList.remove("done");
+          playTapSound();
+        }
+        updateChecklistProgress();
+      }, 50);
+    }
+
+    function updateChecklistProgress() {
+      const allChecks = document.querySelectorAll(".check-checkbox");
+      const doneCount = Array.from(allChecks).filter(c => c.checked).length;
+      const badge = document.getElementById("checkProgressBadge");
+      badge.textContent = `${doneCount} / ${allChecks.length} 完成`;
+
+      if (doneCount === allChecks.length) {
+        playSuccessSound();
+        showToast("🎉 太棒了！法定 6 大通報項目均已完成檢核！", "✅");
+      }
+    }
+
+    /* =========================================================
+       9. 身分救濟管道互動速查器
+       ========================================================= */
+    const REMEDY_DATA = {
+      teacher: {
+        title: "👨‍🏫 教師身分救濟途徑",
+        authority: "各級教師申訴評議委員會 (教育局/教育部)",
+        law: "依據《性別平等教育法》及《教師法》相關規定",
+        deadline: "接獲學校申復結果書面通知次日起 30 日內提出",
+        steps: [
+          "1. 學校性平會處理結果通知次日起 30 日內向學校提出申復（1次為限）。",
+          "2. 若行為人為校長，申請人得逕向主管教育行政機關提出申復。",
+          "3. 教師若涉及停聘/解聘處分，學校報請主管機關核准時，應一併通知當事人於30日內申復。",
+          "4. 對申復決定不服者，得於次日起 30 日內向「教師申訴評議委員會」提出申訴、再申訴及循序提起行政訴訟。"
+        ]
+      },
+      staff: {
+        title: "👔 公立學校職員 (公務人員) 救濟途徑",
+        authority: "公務人員保障暨培訓委員會 (保訓會)",
+        law: "依據《公務人員保障法》及相關公務法規",
+        deadline: "接獲書面通知次日起 30 日內提出",
+        steps: [
+          "1. 於法定 30 日內向學校提出申復（以 1 次為限）。",
+          "2. 對性平申復結果或實質懲處處分不服者，依公務人員保障法向保訓會提起復審或申訴、再申訴。",
+          "3. 不服保訓會復審決定者，得依法向行政法院提起行政訴訟。"
+        ]
+      },
+      worker: {
+        title: "🛠️ 私立學校職員 / 公私立學校工友 救濟途徑",
+        authority: "各縣市政府勞動局 / 勞資爭議調解委員會 / 勞動法庭",
+        law: "依據《勞動基準法》及勞資爭議處理法相關規定",
+        deadline: "接獲書面通知次日起 30 日內提出",
+        steps: [
+          "1. 於接獲處理結果通知次日起 30 日內向學校提出申復（以 1 次為限）。",
+          "2. 對申復結果涉及勞動契約終止或權益受損不服者，可向桃園市政府勞動局申請勞資爭議調解。",
+          "3. 調解不成立者，得依法向普通法院勞動法庭提起確認僱傭關係或損害賠償民事訴訟。"
+        ]
+      },
+      student: {
+        title: "🎒 學生身分 (或法定代理人) 救濟途徑",
+        authority: "楊梅高中「學生申訴評議委員會」",
+        law: "依據《性別平等教育法》及高級中等學校學生申訴評議要點",
+        deadline: "接獲處理結果或申復結果書面通知次日起 30 日內提出",
+        steps: [
+          "1. 學生（被害人或行為人）對學校處理結果不服，得於 30 日內向學校提出申復（1次為限）。",
+          "2. 若行為人為校長或教職員工，被害人得逕向主管教育行政機關（教育局）提出申復。",
+          "3. 對學校申復審議結果仍不服者，次日起 30 日內向學校「學生申訴評議委員會」提出學生申訴。",
+          "4. 學生申訴評議委員會作成決定後，若仍有不服，得向桃園市政府教育局提出學生再申訴。"
+        ]
+      }
+    };
+
+    function selectRole(roleKey) {
+      playTapSound();
+      document.querySelectorAll(".role-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.role === roleKey);
+      });
+
+      const info = REMEDY_DATA[roleKey];
+      const resultCard = document.getElementById("roleRemedyResult");
+      resultCard.innerHTML = `
+        <div class="remedy-target-title">${info.title}</div>
+        <div style="font-size: var(--body-size); color: #166534; margin-bottom: 8px;">
+          <div><strong>🏛️ 救濟專責機關：</strong>${info.authority}</div>
+          <div><strong>⏱️ 法定時限：</strong>${info.deadline}</div>
+          <div><strong>📖 法律依據：</strong>${info.law}</div>
+        </div>
+        <div style="margin-top: 10px; border-top: 1px dashed #86EFAC; padding-top: 8px;">
+          <strong style="color: #14532D; font-size: var(--small-size);">📌 法定救濟流程步驟：</strong>
+          <ul style="list-style: none; margin-top: 6px;">
+            ${info.steps.map(s => `<li style="margin-bottom: 6px; font-size: var(--body-size); color: #166534; padding-left: 14px; position: relative;"><span style="position: absolute; left: 0;">▪</span>${s}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    /* =========================================================
+       10. 大圖全螢幕 Modal 預覽邏輯
+       ========================================================= */
+    function openImageModal(imgSrc, captionText) {
+      playSuccessSound();
+      const modal = document.getElementById("imageModal");
+      const img = document.getElementById("modalImg");
+      const caption = document.getElementById("modalCaption");
+      img.src = imgSrc;
+      caption.textContent = captionText;
+      modal.classList.add("active");
+    }
+
+    function closeImageModal(e) {
+      if (e) e.stopPropagation();
+      playTapSound();
+      document.getElementById("imageModal").classList.remove("active");
+    }
+
+    // 按 ESC 關閉 Modal
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        document.getElementById("imageModal").classList.remove("active");
+      }
+    });
+
+    /* =========================================================
+       11. 頁面初始化
+       ========================================================= */
+    document.addEventListener("DOMContentLoaded", () => {
+      renderExtensions();
+      initTimerDefault();
+      selectRole("teacher");
+    });
+  </script>
+</body>
+</html>
